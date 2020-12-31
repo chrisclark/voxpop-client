@@ -26,7 +26,8 @@
     :name="name"
     :user="user"
     ></ToggleButton>
-  </section>
+  </section
+>
 
     <section class="section">
     <h1 class="subtitle">Who's here?</h1>
