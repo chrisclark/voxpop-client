@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack serve --config webpack.dev.js",
-    "build": "webpack --progress --config webpack.prod.js"
+    "build": "webpack --progress --config webpack.prod.js && cp _redirects build/_redirects"
   },
   "dependencies": {
     "socket.io-client": "^3.0.4",
