@@ -8,7 +8,7 @@ module.exports = merge(common, {
   mode: 'production',
   plugins: [
     new webpack.EnvironmentPlugin({
-      SOCKET_URL: 'http://localhost:5000'
+      SOCKET_URL: 'https://voxpop-server-1.herokuapp.com'
     })
   ]
 });
