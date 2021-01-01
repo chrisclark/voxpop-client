@@ -4,13 +4,17 @@
     v-bind:name="name">
   </MeetingHeader>
 
-
-
   <section class="section">
-    <h1 class="subtitle">Queued to speak</h1>
+    <ToggleButton
+    :queued="queued"
+    :name="name"
+    :user="user"
+      ></ToggleButton>
+
+    <h1 class="subtitle">Speaking next</h1>
     <table class="table">
       <tr v-if="queue === undefined || queue.length == 0">
-        <td>Not a soul!</td>
+        <td>No one yet!</td>
         <td></td>
       </tr>
       <UsersList
@@ -19,15 +23,7 @@
         :user="u"
         ></UsersList>
     </table>
-
-
-  <ToggleButton
-    :queued="queued"
-    :name="name"
-    :user="user"
-    ></ToggleButton>
-  </section
->
+  </section>
 
     <section class="section">
     <h1 class="subtitle">Who's here?</h1>
