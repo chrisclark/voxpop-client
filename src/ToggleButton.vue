@@ -17,7 +17,7 @@ export default {
   },
   computed: {
     labeltxt: function() {
-      return this.queued ? "Nah, all good." : "Ooh! Me!";
+      return this.queued ? "All good." : "Speak up!";
     },
     style: function () {
       let ret = this.admin ? "is-small " : "is-large ";

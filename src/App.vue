@@ -10,7 +10,9 @@
     :name="name"
     :user="user"
       ></ToggleButton>
+  </section>
 
+  <section class="section">
     <h1 class="subtitle">Speaking next</h1>
     <table class="table">
       <tr v-if="queue === undefined || queue.length == 0">
