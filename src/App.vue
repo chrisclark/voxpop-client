@@ -1,7 +1,8 @@
 <template>
 <div class="container">
   <MeetingHeader
-    v-bind:name="name">
+    v-bind:name="name"
+    v-bind:user="user">
   </MeetingHeader>
 
   <section class="section">

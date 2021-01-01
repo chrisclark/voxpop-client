@@ -6,7 +6,7 @@
         {{name}}
       </h1>
       <h2 class="subtitle">
-        Have a great meeting
+        Excited to hear from you, {{user}}!
       </h2>
     </div>
   </div>
@@ -16,6 +16,6 @@
 <script>
 export default {
   name: 'MeetingHeader',
-  props: ['name']
+  props: ['name', 'user']
 }
 </script>
