@@ -46,37 +46,45 @@
 </div>
 </template>
 
-<script>
+<script lang="ts">
 import {socket, api} from "./api";
+import { Component, Vue } from 'vue-property-decorator';
 import MeetingHeader from "./MeetingHeader";
 import ToggleButton from "./ToggleButton";
 import UsersList from "./UsersList";
 
-export default {
-  name: 'App',
-  components: {MeetingHeader, ToggleButton, UsersList},
-  data() {
-    return {
-      name: this.$route.params.meeting,
-      user: this.$route.params.user,
-      queued: false,
-      queue: [],
-      users: [],
-      admin: this.$route.params.user == 'admin'
-    };
-  },
-  created: function() {
+interface ServerMsg {
+  users_list: Array<string>;
+  queue: Array<string>;
+}
+
+@Component({
+  components: {
+    MeetingHeader,
+    ToggleButton,
+    UsersList
+  }
+})
+export default class App extends Vue {
+  private name: string = this.$route.params.meeting
+  private user: string = this.$route.params.user
+  private queued: boolean = false
+  private queue: Array<string> = []
+  private users: Array<string> = []
+  private admin: boolean = this.$route.params.user == 'admin'
+
+  created() {
     var vm = this;
 
     socket.on('connect', function() {
       api.connect(vm.name, vm.user);
     });
 
-    socket.on('queue_update', function(msg) {
+    socket.on('queue_update', function(msg: ServerMsg) {
       vm.queued = msg.queue.includes(vm.user);
       vm.users = msg.users_list;
       vm.queue = msg.queue;
     });
   }
-}
+};
 </script>

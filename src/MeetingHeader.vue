@@ -13,9 +13,12 @@
   </section>
 </template>
 
-<script>
-export default {
-  name: 'MeetingHeader',
-  props: ['name', 'user']
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator';
+
+@Component
+export default class MeetingHeader extends Vue {
+  @Prop(String) readonly name: string
+  @Prop(String) readonly user: string
 }
 </script>

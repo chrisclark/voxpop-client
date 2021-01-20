@@ -13,23 +13,29 @@
       :admin="admin"
     ></ToggleButton>
     </td>
-
-    </tr>
-
-
+  </tr>
 </template>
 
-<script>
-  import ToggleButton from './ToggleButton'
-  import RemoveButton from './RemoveButton'
-  export default {
-    name: 'UsersList',
-    props: ['name', 'user', 'queued', 'admin', 'queue'],
-    components: { ToggleButton, RemoveButton },
-    computed: {
-      is_queued: function() {
-        return this.queue.includes(this.user);
-      }
-    }
+<script lang="ts">
+import ToggleButton from './ToggleButton';
+import RemoveButton from './RemoveButton';
+import { Component, Vue, Prop } from 'vue-property-decorator';
+
+@Component({
+  components: {
+    ToggleButton,
+    RemoveButton
   }
+})
+export default class UsersList extends Vue {
+  @Prop(Boolean) readonly queued: boolean
+  @Prop(String) readonly user: string
+  @Prop(String) readonly name: string
+  @Prop(Boolean) readonly admin: boolean
+  @Prop(Array) queue: Array<string>
+
+  get is_queued(): boolean {
+    return this.queue.includes(this.user);
+  }
+}
 </script>
